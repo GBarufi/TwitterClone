@@ -1,5 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="pt-br">
+	<?php
+		$erroUsuario = isset($_GET['erro_usuario']) ? $_GET['erro_usuario'] : 0;
+		$erroEmail = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
+	?>
+
 	<head>
 		<meta charset="UTF-8">
 
@@ -48,10 +53,20 @@
 				<form method="post" action="registra_usuario.php" id="formCadastrarse">
 					<div class="form-group">
 						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="requiored">
+						<?php
+							if ($erroUsuario) {
+								echo '<span style="color:#FF0000;margin-left:13px;">Usuário já cadastrado</span>';
+							}
+						?>
 					</div>
 
 					<div class="form-group">
 						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+						<?php
+							if ($erroEmail) {
+								echo '<span style="color:#FF0000;margin-left:13px;">Email já cadastrado</span>';
+							}
+						?>
 					</div>
 					
 					<div class="form-group">
